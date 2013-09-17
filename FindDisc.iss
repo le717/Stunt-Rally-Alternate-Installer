@@ -16,10 +16,8 @@ var
 	external 'GetLogicalDriveStringsA@kernel32.dll stdcall';
 
 const
-// Standard LEGO Racers disc
+// Ensure this is a Stunt Rally disc
 	UniqueFile_1 = 'RACERS.ICO';
-// Boys Only Club release
-//	UniqueFile_2 = 'Lego Racers\Racers.ico';
 
 
 	DRIVE_UNKNOWN = 0; // The drive type cannot be determined.
@@ -92,20 +90,12 @@ var
 begin
 	for i:=0 to GetArrayLength(DrvLetters) -1 do
 	begin
-    // A standard LEGO Stunt Rally disc was detected
+    // A LEGO Stunt Rally disc was detected
 		if FileExists( DrvLetters[i] + UniqueFile_1) then
 		begin
 			result:=DrvLetters[i];
 			exit;
 		end
-		//else
-    // A Boys Only Club disc was detected
-    //if FileExists( DrvLetters[i] + UniqueFile_2) then
-		//begin
-			//result:=DrvLetters[i];
-			//exit;
-		//end
-    //else
 
 	end;
 
