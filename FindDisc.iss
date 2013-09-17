@@ -1,4 +1,4 @@
-//  LEGOÂ® Stunt Rally Alternate Installer V1.0
+//  LEGO® Stunt Rally Alternate Installer V1.0
 //  Created 2013 Triangle717
 //  <http://triangle717.wordpress.com/>
 //  Contains source code from Grim Fandango Setup
