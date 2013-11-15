@@ -80,9 +80,10 @@ Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Mi
 
 [Files]
 ; Pull the game files off the LEGO Stunt Rally disc.
-Source: "{code:GetSourceDrive}DATA1.CAB"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall skipifsourcedoesntexist
-Source: "{code:GetSourceDrive}DATA1.HDR"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall skipifsourcedoesntexist
-Source: "{code:GetSourceDrive}SETUPDIR\0009\Readme.txt"; DestDir: "{app}"; Flags: external ignoreversion skipifsourcedoesntexist
+Source: "{code:GetSourceDrive}data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
+Source: "{code:GetSourceDrive}resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}_avi_\*"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}ReadMeUS.txt"; DestDir: "{app}"; Flags: external ignoreversion skipifsourcedoesntexist
 
 ; Manual and icon
 Source: "Manual.pdf"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
@@ -115,9 +116,11 @@ Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runasc
 Filename: "{app}\{#MyAppExeName}"; Parameters: "-novideo"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
 
 [UninstallDelete]
-; Because the files came from a CAB were not installed from [Files], this is needed to delete them.
+; Because the files came from a CAB were not installed from [Files], 
+; this section needed to uninstall them.
 Type: files; Name: "{app}\{#MyAppExeName}"
-Type: files; Name: "{app}\*.tun"
+Type: files; Name: "{app}\{#MySecondAppExeName}"
+Type: filesandordirs; Name: "{app}\_avi_"
 ; Deletes LEGORacers.icd if it exists; Does not throw error if it does not exist
 Type: files; Name: "{app}\LEGORacers.icd"
 Type: files; Name: "{app}\GolDP.dll"
