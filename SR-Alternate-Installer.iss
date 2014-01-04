@@ -1,5 +1,5 @@
-;  LEGO® Stunt Rally Alternate Installer V1.0
-;  Created 2013 Triangle717
+;  LEGO(R) Stunt Rally Alternate Installer v1.0
+;  Created 2013-2014 Triangle717
 ;  <http://Triangle717.WordPress.com/>
 ;  Contains source code from Grim Fandango Setup
 ;  Copyright (c) 2007-2008 Bgbennyboy
@@ -139,7 +139,7 @@ Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
 var
 	SourceDrive: string;
 
-#include "FindDisc.iss"
+#include "FindDisc.pas"
 
 function GetSourceDrive(Param: String): String;
 begin
