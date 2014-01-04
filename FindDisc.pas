@@ -17,7 +17,7 @@ var
 
 const
 // Ensure this is a Stunt Rally disc
-	UniqueFile_1 = 'RACERS.ICO';
+	UniqueFile_1 = '_avi_\intro.avi';
 
 
 	DRIVE_UNKNOWN = 0; // The drive type cannot be determined.

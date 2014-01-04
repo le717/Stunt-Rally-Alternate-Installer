@@ -33,7 +33,7 @@ DefaultDirName={pf}\LEGO Media\Games\{#MyAppNameNoR}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 ; Installer Graphics
-; SetupIconFile=Racers.ico
+SetupIconFile=StuntRally.ico
 ; WizardImageFile=Sidebar.bmp
 WizardSmallImageFile=Small-Image.bmp
 WizardImageStretch=True
@@ -43,7 +43,7 @@ OutputDir=bin
 OutputBaseFilename={#MyAppInstallerName} {#MyAppInstallerVersion}
 ; Uninstallation stuff
 UninstallFilesDir={app}
-; UninstallDisplayIcon={app}\Racers.ico
+UninstallDisplayIcon={app}\StuntRally.ico
 CreateUninstallRegKey=yes
 UninstallDisplayName={#MyAppName}
 ; This is required so Inno can correctly report the installation size.
@@ -86,8 +86,8 @@ Source: "{code:GetSourceDrive}_avi_\*"; DestDir: "{app}"; Flags: external ignore
 Source: "{code:GetSourceDrive}ReadMeUS.txt"; DestDir: "{app}"; Flags: external ignoreversion skipifsourcedoesntexist
 
 ; Manual and icon
-Source: "Manual.pdf"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
-Source: "Racers.ico"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "Manual.pdf"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Tool needed to extract the CAB
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
@@ -95,23 +95,23 @@ Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinst
 
 [Icons]
 ; First and last icons are created only if user choose not to use the videos, else the normal ones are created.
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\Racers.ico"; IconIndex: 0; Comment: "Run LEGO Racers"; Components: Full
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\Racers.ico"; IconIndex: 0; Parameters: "-novideo"; Comment: "Run LEGO Racers without Intro videos"; Components: Minimal
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\Racers.ico"; IconIndex: 0
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\Racers.ico"; IconIndex: 0; Comment: "Run LEGO Racers"; Components: Full; Tasks: desktopicon
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\Racers.ico"; IconIndex: 0; Parameters: "-novideo"; Comment: "Run LEGO Racers without Intro videos"; Components: Minimal; Tasks: desktopicon
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Parameters: "-novideo"; Comment: "Run {#MyAppName} without Intro videos"; Components: Minimal
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\Stunt-Rally.ico"; Comment: "Run {#MyAppName}"; 
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full; Tasks: desktopicon
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Parameters: "-novideo"; Comment: "Run {#MyAppName} without Intro videos"; Components: Minimal; Tasks: desktopicon
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
-[Registry]
+; [Registry]
 ; Registry strings are always hard-coded (!No ISPP functions!) to ensure everything works properly.
-Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\LEGORacers.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
+; Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\LEGORacers.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
 
 [Run]
 ; From to to bottom: Extract the CAB, run game (depending on user's choice on the videos).
-Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\DATA1.CAB"""; Flags: runascurrentuser
+Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Full
 Filename: "{app}\{#MyAppExeName}"; Parameters: "-novideo"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
 
@@ -121,10 +121,6 @@ Filename: "{app}\{#MyAppExeName}"; Parameters: "-novideo"; Flags: nowait postins
 Type: files; Name: "{app}\{#MyAppExeName}"
 Type: files; Name: "{app}\{#MySecondAppExeName}"
 Type: filesandordirs; Name: "{app}\_avi_"
-; Deletes LEGORacers.icd if it exists; Does not throw error if it does not exist
-Type: files; Name: "{app}\LEGORacers.icd"
-Type: files; Name: "{app}\GolDP.dll"
-Type: files; Name: "{app}\LEGO.JAM"
 Type: files; Name: "{app}\*.avi"
 ; Type: filesandordirs; Name: "{app}\Uninstall"
 
