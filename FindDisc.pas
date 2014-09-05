@@ -1,4 +1,4 @@
-//  LEGO(R) Stunt Rally Alternate Installer v1.0
+﻿//  LEGO(R) Stunt Rally Alternate Installer
 //  Created 2013-2014 Triangle717
 //  <http://Triangle717.WordPress.com/>
 //  Contains source code from Grim Fandango Setup
@@ -16,7 +16,7 @@ var
     external 'GetLogicalDriveStringsA@kernel32.dll stdcall';
 
 const
-// Ensure this is a Stunt Rally disc
+    // Ensure this is a Stunt Rally disc
     UniqueFile_1 = '_avi_\intro.avi';
 
 
@@ -90,7 +90,7 @@ var
 begin
     for i:=0 to GetArrayLength(DrvLetters) -1 do
     begin
-    // A LEGO Stunt Rally disc was detected
+        // A LEGO Stunt Rally disc was detected
         if FileExists( DrvLetters[i] + UniqueFile_1) then
         begin
             result:=DrvLetters[i];
@@ -107,7 +107,7 @@ begin
     FindAllCdDrives();
     if GetArrayLength(DrvLetters) < 1 then
     begin
-        MsgBox('No optical drive found was found on your computer.', mbError, MB_OK);
+        MsgBox('No disc drive was found on your computer.', mbError, MB_OK);
         Abort;
     end;
 

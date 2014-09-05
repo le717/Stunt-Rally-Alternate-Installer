@@ -1,4 +1,4 @@
-;  LEGO(R) Stunt Rally Alternate Installer v1.0
+﻿;  LEGO Stunt Rally Alternate Installer
 ;  Created 2013-2014 Triangle717
 ;  <http://Triangle717.WordPress.com/>
 ;  Contains source code from Grim Fandango Setup
@@ -7,13 +7,13 @@
 
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
-#if VER < EncodeVer(5,5,2)
-  #error You must use Inno Setup 5.5.2 or newer to compile this script
+#if VER < EncodeVer(5, 5, 2)
+#error You must use Inno Setup 5.5.2 or newer to compile this script
 #endif
 
-#define MyAppInstallerName "LEGO Stunt Rally Alternate Installer"
-#define MyAppInstallerVersion "1.0"
-#define MyAppName "LEGO� Stunt Rally"
+#define MyAppInstallerName "LEGO® Stunt Rally Alternate Installer"
+#define MyAppInstallerVersion "1.0.0"
+#define MyAppName "LEGO® Stunt Rally"
 #define MyAppNameNoR "LEGO Stunt Rally"
 #define MyAppVersion "0.3.5.1"
 #define MyAppPublisher "LEGO Media"
@@ -21,16 +21,16 @@
 #define MySecondAppExeName "_msr.exe"
 
 [Setup]
-AppID={#MyAppInstallerName}{#MyAppInstallerVersion}
+AppID={#MyAppName}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 VersionInfoVersion={#MyAppInstallerVersion}
 AppPublisher={#MyAppPublisher}
-AppCopyright=(C) 2000 {#MyAppPublisher}
+AppCopyright=(c) 2000 {#MyAppPublisher}
 LicenseFile=license.txt
 ; Start menu/screen and Desktop shortcuts
 DefaultDirName={pf}\LEGO Media\Games\{#MyAppNameNoR}
-DefaultGroupName={#MyAppName}
+DefaultGroupName=LEGO Media\{#MyAppNameNoR}
 AllowNoIcons=yes
 ; Installer Graphics
 SetupIconFile=StuntRally.ico
@@ -40,7 +40,7 @@ WizardImageStretch=True
 WizardImageBackColor=clBlack
 ; Location of the compiled Exe
 OutputDir=bin
-OutputBaseFilename={#MyAppInstallerName} {#MyAppInstallerVersion}
+OutputBaseFilename={#MyAppNameNoR} Alternate Installer {#MyAppInstallerVersion}
 ; Uninstallation stuff
 UninstallFilesDir={app}
 UninstallDisplayIcon={app}\StuntRally.ico
@@ -54,8 +54,7 @@ SolidCompression=True
 InternalCompressLevel=ultra
 LZMAUseSeparateProcess=yes
 ; From top to bottom:
-; Explicitly set Admin rights, no other languages,
-; do not restart upon finishing.
+; Require Admin rights, no other languages, do not restart upon finish.
 PrivilegesRequired=admin
 ShowLanguageDialog=no
 RestartIfNeededByRun=no
@@ -64,8 +63,8 @@ RestartIfNeededByRun=no
 Name: "English"; MessagesFile: "compiler:Default.isl"
 
 [Messages]
-BeveledLabel={#MyAppInstallerName} {#MyAppInstallerVersion}
-; WelcomeLabel2 is overridden because I'm unsure if every
+BeveledLabel={#MyAppInstallerName}
+;; WelcomeLabel2 is overridden because I'm unsure if every
 ; LEGO Stunt Rally disc says version 0.3.5.1 or just mine.
 WelcomeLabel2=This will install [name] on your computer.%n%nIt is recommended that you close all other applications before continuing.
 ; DiskSpaceMBLabel is overridden because it reports an incorrect installation size.
@@ -86,19 +85,19 @@ Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Mi
 Source: "{code:GetSourceDrive}data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 Source: "{code:GetSourceDrive}resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}_avi_\*"; DestDir: "{app}"; Flags: external ignoreversion
-Source: "{code:GetSourceDrive}ReadMeUS.txt"; DestDir: "{app}"; Flags: external ignoreversion skipifsourcedoesntexist
 
 ; Manual and icon
 ; Source: "Manual.pdf"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "ReadMeUS.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Tool needed to extract the CAB
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinstall
 
 [Icons]
-; The first {group} and {commondesktop} entries are created only if the user
-;chooses to play the intro videos, while the second ones skip the intro vidoes.
+; First and last icons are created only if user choose not to use the videos,
+; else the normal ones are created.
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MySecondAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Parameters: "/NOINTROVIDEO"; Comment: "Run {#MyAppName} without Intro videos"; Components: Minimal
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full; Tasks: desktopicon
@@ -118,7 +117,7 @@ Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupD
 ; (depending on user's choice on the videos).
 Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Full
-Filename: "{app}\{#MyAppExeName}"; Parameters: "-novideo"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
+Filename: "{app}\{#MyAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
 
 [UninstallDelete]
 ; Because the files came from a CAB were not installed from [Files],
@@ -131,12 +130,12 @@ Type: files; Name: "{app}\*.avi"
 
 [Dirs]
 ; Created to ensure the save games are not removed
-; (which should never ever happen).
+; (which should never ever happen)
 Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
 
 [Code]
 // Pascal script from Bgbennyboy to pull files off a CD, greatly trimmed up
-// and modified to support ANSI and Unicode Inno Setup by Triangle717.
+// and modified to support ANSI and Unicode Inno Setup by Triangle717
 var
     SourceDrive: string;
 
