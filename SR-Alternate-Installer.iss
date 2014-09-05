@@ -8,13 +8,12 @@
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
 #if VER < EncodeVer(5, 5, 2)
-#error You must use Inno Setup 5.5.2 or newer to compile this script
+  #error You must use Inno Setup 5.5.2 or newer to compile this script
 #endif
 
-#define MyAppInstallerName "LEGO® Stunt Rally Alternate Installer"
+#define MyAppInstallerName "LEGO Stunt Rally Alternate Installer"
 #define MyAppInstallerVersion "1.0.0"
-#define MyAppName "LEGO® Stunt Rally"
-#define MyAppNameNoR "LEGO Stunt Rally"
+#define MyAppName "LEGO Stunt Rally"
 #define MyAppVersion "0.3.5.1"
 #define MyAppPublisher "LEGO Media"
 #define MyAppExeName "StuntRally.exe"
@@ -29,8 +28,8 @@ AppPublisher={#MyAppPublisher}
 AppCopyright=(c) 2000 {#MyAppPublisher}
 LicenseFile=license.txt
 ; Start menu/screen and Desktop shortcuts
-DefaultDirName={pf}\LEGO Media\Games\{#MyAppNameNoR}
-DefaultGroupName=LEGO Media\{#MyAppNameNoR}
+DefaultDirName={pf}\LEGO Media\Games\{#MyAppName}
+DefaultGroupName=LEGO Media\{#MyAppName}
 AllowNoIcons=yes
 ; Installer Graphics
 SetupIconFile=StuntRally.ico
@@ -40,7 +39,7 @@ WizardImageStretch=True
 WizardImageBackColor=clBlack
 ; Location of the compiled Exe
 OutputDir=bin
-OutputBaseFilename={#MyAppNameNoR} Alternate Installer {#MyAppInstallerVersion}
+OutputBaseFilename={#MyAppName} Alternate Installer {#MyAppInstallerVersion}
 ; Uninstallation stuff
 UninstallFilesDir={app}
 UninstallDisplayIcon={app}\StuntRally.ico
@@ -108,16 +107,37 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; 
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
-; [Registry]
-; Registry strings are always hard-coded (!No ISPP functions!) to ensure everything works properly.
-; Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\LEGORacers.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
+[Registry]
+; Registry strings are always hard-coded (!No ISPP functions!) to ensure everything works properly
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: none; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "AutoSave_Track_Name"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Avis_Installed"; ValueData: "1"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Balance"; ValueData: "50"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Campaign_Player_Avatar"; ValueData: "10"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Campaign_Player_Car"; ValueData: "60010"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Campaign_Player_Skin"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Campaign_Player_Tyre"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Campaign_Progress"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Controller1"; ValueData: "1"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Controller2"; ValueData: "2"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Controller3"; ValueData: "3"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Controller4"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "EffectsLevel"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "HelpOnBeforeRestart"; ValueData: "1"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "NumDevices"; ValueData: "4"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Path"; ValueData: "{app}"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Resolution"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Volume"; ValueData: "100"; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally\1.00.000"; ValueType: none; Flags: uninsdeletekey; Components: Full Minimal
+Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\StuntRally.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
+Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\_msr.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
 
 [Run]
 ; From to to bottom: Extract the CAB, run game
 ; (depending on user's choice on the videos).
 Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Full
-Filename: "{app}\{#MyAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
+Filename: "{app}\{#MySecondAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
 
 [UninstallDelete]
 ; Because the files came from a CAB were not installed from [Files],
