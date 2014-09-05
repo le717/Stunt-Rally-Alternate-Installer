@@ -86,7 +86,7 @@ Source: "{code:GetSourceDrive}resource.cfg"; DestDir: "{app}"; Flags: external i
 Source: "{code:GetSourceDrive}_avi_\*"; DestDir: "{app}"; Flags: external ignoreversion
 
 ; Manual and icon
-; Source: "Manual.pdf"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "STUNT_RALLY_MANUAL_UK.pdf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "ReadMeUS.txt"; DestDir: "{app}"; Flags: ignoreversion
 
