@@ -39,7 +39,7 @@ WizardSmallImageFile=Small-Image.bmp
 WizardImageStretch=True
 
 OutputDir=bin
-OutputBaseFilename={#MyAppName}-Alternate-Installer-{#MyAppInstallerVersion}
+OutputBaseFilename=LEGO-Stunt-Rally-Alternate-Installer-{#MyAppInstallerVersion}
 
 UninstallFilesDir={app}
 UninstallDisplayName={#MyAppName}
