@@ -82,12 +82,10 @@ Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Mi
 ; Pull the game files off the LEGO Stunt Rally disc.
 Source: "{code:GetSourceDrive}data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 Source: "{code:GetSourceDrive}resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
-Source: "{code:GetSourceDrive}_avi_\*"; DestDir: "{app}"; Flags: external ignoreversion
 
 ; Manual and icon
 Source: "STUNT_RALLY_MANUAL_UK.pdf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "ReadMeUS.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Tool needed to extract the CAB
