@@ -141,7 +141,7 @@ Type: filesandordirs; Name: "{app}\res"
 
 [Code]
 // Pascal script from Bgbennyboy to detect a CD, cleaned up
-// and modified to support ANSI and Unicode Inno Setup
+// and modified to support both ANSI and Unicode Inno Setup
 var
     SourceDrive: string;
 
