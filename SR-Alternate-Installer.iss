@@ -142,9 +142,12 @@ Filename: "{app}\{#MySecondAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: now
 ; this section needed to uninstall them.
 Type: files; Name: "{app}\{#MyAppExeName}"
 Type: files; Name: "{app}\{#MySecondAppExeName}"
-Type: filesandordirs; Name: "{app}\_avi_"
-Type: files; Name: "{app}\*.avi"
-; Type: filesandordirs; Name: "{app}\Uninstall"
+Type: files; Name: "{app}\ReadMeUS.txt"
+Type: files; Name: "{app}\QMDX.dll"
+Type: filesandordirs; Name: "{app}\art"
+Type: filesandordirs; Name: "{app}\CampaignTracks"
+Type: filesandordirs; Name: "{app}\GameTracks"
+Type: filesandordirs; Name: "{app}\res"
 
 [Dirs]
 ; Created to ensure the save games are not removed
