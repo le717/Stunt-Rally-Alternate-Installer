@@ -18,8 +18,7 @@
 #define MyAppName "LEGO Stunt Rally"
 #define MyAppVersion "0.3.5.1"
 #define MyAppPublisher "LEGO Media"
-#define MyAppExeName "StuntRally.exe"
-#define MySecondAppExeName "_msr.exe"
+#define MyAppExeName "_msr.exe"
 
 [Setup]
 AppID={#MyAppName}
@@ -93,11 +92,9 @@ Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
 [Icons]
 ; First and last icons are created only if user choose not to use the videos,
 ; else the normal ones are created.
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MySecondAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Parameters: "/NOINTROVIDEO"; Comment: "Run {#MyAppName} without Intro videos"; Components: Minimal
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full; Tasks: desktopicon
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MySecondAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Parameters: "/NOINTROVIDEO"; Comment: "Run {#MyAppName} without Intro videos"; Components: Minimal; Tasks: desktopicon
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\Stunt-Rally.ico"; Comment: "Run {#MyAppName}";
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Tasks: desktopicon
 
 [Registry]
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: none; Flags: uninsdeletekey
@@ -126,14 +123,13 @@ Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFla
 [Run]
 Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
 Filename: "{app}\post-install.bat"; WorkingDir: "{app}"; Flags: runascurrentuser
-Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Full
-Filename: "{app}\{#MySecondAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Minimal
+Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
 [UninstallDelete]
 ; Because the files came from a CAB were not installed from [Files],
 ; this is required to delete them
 Type: files; Name: "{app}\{#MyAppExeName}"
-Type: files; Name: "{app}\{#MySecondAppExeName}"
+Type: files; Name: "{app}\StuntRally.exe"
 Type: files; Name: "{app}\MOTO.rtb"
 Type: files; Name: "{app}\MOTO.usr"
 Type: files; Name: "{app}\ReadMeUS.txt"
