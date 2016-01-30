@@ -89,6 +89,7 @@ Source: "{code:GetSourceDrive}_avi_\*"; DestDir: "{app}"; Flags: external ignore
 Source: "STUNT_RALLY_MANUAL_UK.pdf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "ReadMeUS.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Tool needed to extract the CAB
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
