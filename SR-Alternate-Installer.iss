@@ -68,19 +68,9 @@ BeveledLabel={#MyAppInstallerName}
 ; an incorrect installation size
 DiskSpaceMBLabel=At least 291 MB of free disk space is required.
 
-; Both Types and Components sections are required
-; to create the installation options.
-[Types]
-Name: "Full"; Description: "Full Installation (With Movies)"
-Name: "Minimal"; Description: "Minimal Installation (Without Movies)"
-
-[Components]
-Name: "Full"; Description: "Full Installation (With Movies)"; Types: Full
-Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Minimal
-
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
+Name: "adminrun"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
 ; Tools needed for a successful installation
@@ -130,8 +120,8 @@ Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string;
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Resolution"; ValueData: "0"; Flags: uninsdeletekey; Components: Full Minimal
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Volume"; ValueData: "100"; Flags: uninsdeletekey; Components: Full Minimal
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally\1.00.000"; ValueType: none; Flags: uninsdeletekey; Components: Full Minimal
-Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\StuntRally.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
-Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\_msr.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
+Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\StuntRally.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: adminrun
+Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\_msr.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: adminrun
 
 [Run]
 Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
