@@ -84,11 +84,6 @@ Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 
-[Dirs]
-; Create to ensure the save games are not removed
-; (which should never ever happen)
-Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
-
 [Icons]
 ; First and last icons are created only if user choose not to use the videos,
 ; else the normal ones are created.
