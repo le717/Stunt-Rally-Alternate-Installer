@@ -1,9 +1,11 @@
 ﻿;  LEGO Stunt Rally Alternate Installer
-;  Created 2013-2014 Triangle717
+;  Created 2013-2016 Triangle717
 ;  <http://Triangle717.WordPress.com/>
+;
 ;  Contains source code from Grim Fandango Setup
 ;  Copyright (c) 2007-2008 Bgbennyboy
 ;  <http://quick.mixnmojo.com/>
+
 
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
@@ -61,10 +63,12 @@ Name: "English"; MessagesFile: "compiler:Default.isl"
 
 [Messages]
 BeveledLabel={#MyAppInstallerName}
-;; WelcomeLabel2 is overridden because I'm unsure if every
+; WelcomeLabel2 is overridden because I'm unsure if every
 ; Stunt Rally disc reports the same version.
 WelcomeLabel2=This will install [name] on your computer.%n%nIt is recommended that you close all other applications before continuing.
-; DiskSpaceMBLabel is overridden because it reports an incorrect installation size.
+
+; DiskSpaceMBLabel is overridden because it reports
+; an incorrect installation size
 DiskSpaceMBLabel=At least 291 MB of free disk space is required.
 
 ; Both Types and Components sections are required
@@ -78,17 +82,15 @@ Name: "Full"; Description: "Full Installation (With Movies)"; Types: Full
 Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Minimal
 
 [Files]
-; Tools needed to extract the CAB
+; Tools needed for a successful installation
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "Tools\post-install.bat"; DestDir: "{app}"; Flags: deleteafterinstall
 
-; Manual and icon
 Source: "STUNT_RALLY_MANUAL_UK.pdf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 
-; Pull the game files off the LEGO Stunt Rally disc.
 Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 
@@ -106,7 +108,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Registry]
-; Registry strings are always hard-coded (!No ISPP functions!) to ensure everything works properly
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: none; Flags: uninsdeletekey; Components: Full Minimal
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "AutoSave_Track_Name"; Flags: uninsdeletekey; Components: Full Minimal
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: string; ValueName: "Avis_Installed"; ValueData: "1"; Flags: uninsdeletekey; Components: Full Minimal
@@ -131,8 +132,6 @@ Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFla
 Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\_msr.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletevalue; Tasks: Admin
 
 [Run]
-; From to to bottom: Extract the CAB, run game
-; (depending on user's choice on the videos).
 Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
 Filename: "{app}\post-install.bat"; WorkingDir: "{app}"; Flags: runascurrentuser
 Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Components: Full
@@ -140,7 +139,7 @@ Filename: "{app}\{#MySecondAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: now
 
 [UninstallDelete]
 ; Because the files came from a CAB were not installed from [Files],
-; this section needed to uninstall them.
+; this is required to delete them
 Type: files; Name: "{app}\{#MyAppExeName}"
 Type: files; Name: "{app}\{#MySecondAppExeName}"
 Type: files; Name: "{app}\ReadMeUS.txt"
@@ -151,13 +150,13 @@ Type: filesandordirs; Name: "{app}\GameTracks"
 Type: filesandordirs; Name: "{app}\res"
 
 [Dirs]
-; Created to ensure the save games are not removed
+; Create to ensure the save games are not removed
 ; (which should never ever happen)
 Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
 
 [Code]
-// Pascal script from Bgbennyboy to pull files off a CD, greatly trimmed up
-// and modified to support ANSI and Unicode Inno Setup by Triangle717
+// Pascal script from Bgbennyboy to detect a CD, cleaned up
+// and modified to support ANSI and Unicode Inno Setup
 var
     SourceDrive: string;
 
