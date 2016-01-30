@@ -78,18 +78,19 @@ Name: "Full"; Description: "Full Installation (With Movies)"; Types: Full
 Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Minimal
 
 [Files]
-; Pull the game files off the LEGO Stunt Rally disc.
-Source: "{code:GetSourceDrive}data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
-Source: "{code:GetSourceDrive}resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
+; Tools needed to extract the CAB
+Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
+Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinstall
+Source: "Tools\post-install.bat"; DestDir: "{app}"; Flags: deleteafterinstall
 
 ; Manual and icon
 Source: "STUNT_RALLY_MANUAL_UK.pdf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 
-; Tool needed to extract the CAB
-Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
-Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinstall
+; Pull the game files off the LEGO Stunt Rally disc.
+Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 
 [Icons]
 ; First and last icons are created only if user choose not to use the videos,
