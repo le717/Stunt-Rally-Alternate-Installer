@@ -7,8 +7,8 @@
 
 ; If any version below the specified version is used for compiling,
 ; this error will be shown.
-#if VER < EncodeVer(5, 5, 2)
-  #error You must use Inno Setup 5.5.2 or newer to compile this script
+#if VER < EncodeVer(5, 5, 8)
+  #error You must use Inno Setup 5.5.8 or newer to compile this script
 #endif
 
 #define MyAppInstallerName "LEGO Stunt Rally Alternate Installer"
@@ -36,7 +36,6 @@ SetupIconFile=StuntRally.ico
 ; WizardImageFile=Sidebar.bmp
 WizardSmallImageFile=Small-Image.bmp
 WizardImageStretch=True
-WizardImageBackColor=clBlack
 ; Location of the compiled Exe
 OutputDir=bin
 OutputBaseFilename={#MyAppName} Alternate Installer {#MyAppInstallerVersion}
