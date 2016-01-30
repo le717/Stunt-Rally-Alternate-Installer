@@ -72,7 +72,9 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "adminrun"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-; Tools needed for a successful installation
+Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
+Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
+
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "Tools\CABExtract\ZD51145.DLL"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "Tools\post-install.bat"; DestDir: "{app}"; Flags: deleteafterinstall
@@ -80,9 +82,6 @@ Source: "Tools\post-install.bat"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "STUNT_RALLY_MANUAL_UK.pdf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
-
-Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
-Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 
 [Icons]
 ; First and last icons are created only if user choose not to use the videos,
