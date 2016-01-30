@@ -63,9 +63,6 @@ Name: "English"; MessagesFile: "compiler:Default.isl"
 
 [Messages]
 BeveledLabel={#MyAppInstallerName}
-; WelcomeLabel2 is overridden because I'm unsure if every
-; Stunt Rally disc reports the same version.
-WelcomeLabel2=This will install [name] on your computer.%n%nIt is recommended that you close all other applications before continuing.
 
 ; DiskSpaceMBLabel is overridden because it reports
 ; an incorrect installation size
