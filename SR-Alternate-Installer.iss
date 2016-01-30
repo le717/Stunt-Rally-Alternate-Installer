@@ -27,32 +27,31 @@ VersionInfoVersion={#MyAppInstallerVersion}
 AppPublisher={#MyAppPublisher}
 AppCopyright=(c) 2000 {#MyAppPublisher}
 LicenseFile=license.txt
-; Start menu/screen and Desktop shortcuts
+
 DefaultDirName={pf}\LEGO Media\Games\{#MyAppName}
 DefaultGroupName=LEGO Media\{#MyAppName}
 AllowNoIcons=yes
-; Installer Graphics
+
 SetupIconFile=StuntRally.ico
 ; WizardImageFile=Sidebar.bmp
 WizardSmallImageFile=Small-Image.bmp
 WizardImageStretch=True
-; Location of the compiled Exe
+
 OutputDir=bin
-OutputBaseFilename={#MyAppName} Alternate Installer {#MyAppInstallerVersion}
-; Uninstallation stuff
+OutputBaseFilename={#MyAppName}-Alternate-Installer-{#MyAppInstallerVersion}
+
 UninstallFilesDir={app}
+UninstallDisplayName={#MyAppName}
 UninstallDisplayIcon={app}\StuntRally.ico
 CreateUninstallRegKey=yes
-UninstallDisplayName={#MyAppName}
 ; This is required so Inno can correctly report the installation size.
-UninstallDisplaySize=301989888
-; Compression
+UninstallDisplaySize=305135616
+
 Compression=lzma2/ultra64
 SolidCompression=True
 InternalCompressLevel=ultra
 LZMAUseSeparateProcess=yes
-; From top to bottom:
-; Require Admin rights, no other languages, do not restart upon finish.
+
 PrivilegesRequired=admin
 ShowLanguageDialog=no
 RestartIfNeededByRun=no
@@ -63,10 +62,10 @@ Name: "English"; MessagesFile: "compiler:Default.isl"
 [Messages]
 BeveledLabel={#MyAppInstallerName}
 ;; WelcomeLabel2 is overridden because I'm unsure if every
-; LEGO Stunt Rally disc says version 0.3.5.1 or just mine.
+; Stunt Rally disc reports the same version.
 WelcomeLabel2=This will install [name] on your computer.%n%nIt is recommended that you close all other applications before continuing.
 ; DiskSpaceMBLabel is overridden because it reports an incorrect installation size.
-DiskSpaceMBLabel=At least 399 MB of free disk space is required.
+DiskSpaceMBLabel=At least 291 MB of free disk space is required.
 
 ; Both Types and Components sections are required
 ; to create the installation options.
