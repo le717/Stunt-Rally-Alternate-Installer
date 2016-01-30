@@ -34,7 +34,7 @@ DefaultGroupName=LEGO Media\{#MyAppName}
 AllowNoIcons=yes
 
 SetupIconFile=StuntRally.ico
-; WizardImageFile=Sidebar.bmp
+WizardImageFile=Sidebar.bmp
 WizardSmallImageFile=Small-Image.bmp
 WizardImageStretch=True
 
