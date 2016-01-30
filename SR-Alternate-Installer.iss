@@ -78,6 +78,10 @@ Name: "Minimal"; Description: "Minimal Installation (Without Movies)"
 Name: "Full"; Description: "Full Installation (With Movies)"; Types: Full
 Name: "Minimal"; Description: "Minimal Installation (Without Movies)"; Types: Minimal
 
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
+
 [Files]
 ; Tools needed for a successful installation
 Source: "Tools\CABExtract\i5comp.exe"; DestDir: "{app}"; Flags: deleteafterinstall
@@ -91,6 +95,11 @@ Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{code:GetSourceDrive}\resource.cfg"; DestDir: "{app}"; Flags: external ignoreversion
 Source: "{code:GetSourceDrive}\data1.cab"; DestDir: "{app}"; Flags: external ignoreversion deleteafterinstall
 
+[Dirs]
+; Create to ensure the save games are not removed
+; (which should never ever happen)
+Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
+
 [Icons]
 ; First and last icons are created only if user choose not to use the videos,
 ; else the normal ones are created.
@@ -99,10 +108,6 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MySecondAppExeName}"; IconFilen
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"; Components: Full; Tasks: desktopicon
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MySecondAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Parameters: "/NOINTROVIDEO"; Comment: "Run {#MyAppName} without Intro videos"; Components: Minimal; Tasks: desktopicon
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\Stunt-Rally.ico"; Comment: "Run {#MyAppName}";
-
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "Admin"; Description: "Run {#MyAppName} with Administrator Rights"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Registry]
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: none; Flags: uninsdeletekey; Components: Full Minimal
@@ -145,11 +150,6 @@ Type: filesandordirs; Name: "{app}\art"
 Type: filesandordirs; Name: "{app}\CampaignTracks"
 Type: filesandordirs; Name: "{app}\GameTracks"
 Type: filesandordirs; Name: "{app}\res"
-
-[Dirs]
-; Create to ensure the save games are not removed
-; (which should never ever happen)
-Name: "{app}\SavedTracks"; Flags: uninsneveruninstall
 
 [Code]
 // Pascal script from Bgbennyboy to detect a CD, cleaned up
