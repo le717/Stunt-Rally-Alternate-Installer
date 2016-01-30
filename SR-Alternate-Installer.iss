@@ -144,6 +144,8 @@ Filename: "{app}\{#MySecondAppExeName}"; Parameters: "/NOINTROVIDEO"; Flags: now
 ; this is required to delete them
 Type: files; Name: "{app}\{#MyAppExeName}"
 Type: files; Name: "{app}\{#MySecondAppExeName}"
+Type: files; Name: "{app}\MOTO.rtb"
+Type: files; Name: "{app}\MOTO.usr"
 Type: files; Name: "{app}\ReadMeUS.txt"
 Type: files; Name: "{app}\QMDX.dll"
 Type: filesandordirs; Name: "{app}\art"
