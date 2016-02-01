@@ -63,8 +63,8 @@ Name: "English"; MessagesFile: "compiler:Default.isl"
 [Messages]
 BeveledLabel={#MyAppInstallerName}
 
-; DiskSpaceMBLabel is overridden because it reports
-; an incorrect installation size
+; DiskSpaceMBLabel is overridden in order to report 
+; a correct installation size
 DiskSpaceMBLabel=At least 291 MB of free disk space is required.
 
 [Tasks]
@@ -86,9 +86,9 @@ Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 [Icons]
 ; First and last icons are created only if user choose not to use the videos,
 ; else the normal ones are created.
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; IconIndex: 0; Parameters: "/FROMLAUNCHER"; Comment: "Run {#MyAppName}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Uninstall {#MyAppName}"; Tasks: desktopicon
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; IconIndex: 0; Parameters: "/FROMLAUNCHER"; Comment: "Uninstall {#MyAppName}"; Tasks: desktopicon
 
 [Registry]
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: none; Flags: uninsdeletekey
@@ -117,7 +117,7 @@ Root: "HKCU"; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFla
 [Run]
 Filename: "{app}\i5comp.exe"; Parameters: "x ""{app}\data1.cab"""; Flags: runascurrentuser
 Filename: "{app}\post-install.bat"; WorkingDir: "{app}"; Flags: runascurrentuser
-Filename: "{app}\{#MyAppExeName}"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
+Filename: "{app}\{#MyAppExeName}"; Parameters: "/FROMLAUNCHER"; Flags: nowait postinstall skipifsilent runascurrentuser; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"
 
 [UninstallDelete]
 ; Because the files came from a CAB were not installed from [Files],
