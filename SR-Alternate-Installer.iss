@@ -128,10 +128,15 @@ Type: files; Name: "{app}\MOTO.rtb"
 Type: files; Name: "{app}\MOTO.usr"
 Type: files; Name: "{app}\ReadMeUS.txt"
 Type: files; Name: "{app}\QMDX.dll"
+Type: files; Name: "{app}\SavedTracks\Autosaved.trk"
+Type: files; Name: "{app}\SavedTracks\dune.trk"
+Type: files; Name: "{app}\SavedTracks\formula fun.trk"
+Type: files; Name: "{app}\SavedTracks\freeway.trk"
 Type: filesandordirs; Name: "{app}\art"
 Type: filesandordirs; Name: "{app}\CampaignTracks"
 Type: filesandordirs; Name: "{app}\GameTracks"
 Type: filesandordirs; Name: "{app}\res"
+Type: filesandordirs; Name: "{app}\SavedTracks\Images"
 
 [Code]
 // Pascal script from Bgbennyboy to detect a CD, cleaned up
