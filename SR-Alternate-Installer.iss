@@ -124,6 +124,7 @@ Filename: "{app}\{#MyAppExeName}"; Parameters: "/FROMLAUNCHER"; Flags: nowait po
 ; this is required to delete them
 Type: files; Name: "{app}\{#MyAppExeName}"
 Type: files; Name: "{app}\StuntRally.exe"
+Type: files; Name: "{app}\Balonxb.ttf"
 Type: files; Name: "{app}\MOTO.rtb"
 Type: files; Name: "{app}\MOTO.usr"
 Type: files; Name: "{app}\ReadMeUS.txt"
@@ -137,6 +138,7 @@ Type: filesandordirs; Name: "{app}\CampaignTracks"
 Type: filesandordirs; Name: "{app}\GameTracks"
 Type: filesandordirs; Name: "{app}\res"
 Type: filesandordirs; Name: "{app}\SavedTracks\Images"
+Type: dirifempty; Name: "{app}\SavedTracks"
 
 [Code]
 // Pascal script from Bgbennyboy to detect a CD, cleaned up
