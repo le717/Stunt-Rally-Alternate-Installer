@@ -84,11 +84,9 @@ Source: "StuntRally.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Tools\d3drm.dll"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-; First and last icons are created only if user choose not to use the videos,
-; else the normal ones are created.
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; IconIndex: 0; Parameters: "/FROMLAUNCHER"; Comment: "Run {#MyAppName}"
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Run {#MyAppName}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; IconIndex: 0; Parameters: "/FROMLAUNCHER"; Comment: "Uninstall {#MyAppName}"; Tasks: desktopicon
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; IconFilename: "{app}\StuntRally.ico"; Comment: "Uninstall {#MyAppName}"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\StuntRally.ico"; IconIndex: 0; Parameters: "/FROMLAUNCHER"; Comment: "Run {#MyAppName}"; Tasks: desktopicon
 
 [Registry]
 Root: "HKLM"; Subkey: "SOFTWARE\LEGO Media\LEGO Stunt Rally"; ValueType: none; Flags: uninsdeletekey
