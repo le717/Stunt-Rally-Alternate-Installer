@@ -12,4 +12,4 @@ the InstallShield CAB archive. It was taken from [*Universal Extractor*](legroom
 ## License ##
 [MIT](LICENSE)
 
-2013-2016 Triangle717
+2013-2016 Caleb Ely
